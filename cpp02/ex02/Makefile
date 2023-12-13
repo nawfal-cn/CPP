@@ -4,7 +4,7 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-cppFILES = main.cpp Fixed.cpp
+cppFILES = main.cpp Fixed.cpp FixedCompOp.cpp FixedArithOp.cpp
 
 cppOBJ = $(cppFILES:.cpp=.o)
 
