@@ -1,20 +1,22 @@
 NAME = fixed
 
-CPP = c++
+CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-cppFILES = main.cpp Fixed.cpp
+CPPFILES = main.cpp Fixed.cpp
 
-cppOBJ = $(cppFILES:.cpp=.o)
+HEADER = Fixed.hpp
+
+CPPOBJ = $(CPPFILES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(cppOBJ)
-		$(CPP) $(CPPFLAGS) $(cppFILES) -o $(NAME)
+$(NAME) : $(CPPOBJ) $(HEADER)
+		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
 clean :
-	rm -f $(cppOBJ)
+	rm -f $(CPPOBJ)
 
 fclean : clean
 	rm -f $(NAME)

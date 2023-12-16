@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FixedIncDec.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 13:11:10 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/13 13:11:10 by marvin           ###   ########.fr       */
+/*   Created: 2023/12/08 11:10:41 by nchaknan          #+#    #+#             */
+/*   Updated: 2023/12/14 22:18:27 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Fixed &Fixed::operator++(void)
 }
 
 // x++
-Fixed &Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
     Fixed tmp = *this;
     this->value += 1;
@@ -35,7 +35,7 @@ Fixed &Fixed::operator--(void)
 }
 
 // x--
-Fixed &Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
     Fixed tmp = *this;
     this->value -= 1;
