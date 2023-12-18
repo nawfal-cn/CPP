@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = clapTrap
 
 CCPP = c++
 
@@ -15,12 +15,15 @@ all : $(NAME)
 $(NAME) : $(CPPOBJ) $(HEADER)
 		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
+run : $(NAME)
+	./$(NAME)
+
 clean :
 	rm -f $(CPPOBJ)
 
 fclean : clean
 	rm -f $(NAME)
 
-re : fclean all	
+re : fclean all
 
 .PHONY = all clean fclean re

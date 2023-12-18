@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:08:05 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/16 19:08:26 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/18 22:56:36 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int main()
 {
-    return (0);
+    ClapTrap claptrap("Autron");
+
+    claptrap.attack("Enemy");
+    claptrap.takeDamage(5);
+    claptrap.beRepaired(3);
+
+    return 0;
 }
