@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/19 20:59:51 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/18 22:50:15 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,3 @@ void ClapTrap::beRepaired(unsigned int amount)
     else
         std::cout<<"ClapTrap can't be repaired because there's no Hit/Energy points left!"<<std::endl;
 }
-
-        std::string ClapTrap::print1()
-        {
-            int i = 0;
-            i += 1;
-            return ("nawfal zamel\n");
-        }

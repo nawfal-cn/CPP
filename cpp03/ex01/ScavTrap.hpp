@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 19:08:05 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/19 20:41:58 by nchaknan         ###   ########.fr       */
+/*   Created: 2023/12/19 20:04:11 by nchaknan          #+#    #+#             */
+/*   Updated: 2023/12/19 20:59:26 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-    ClapTrap claptrap("Autron");
-
-    claptrap.attack("Enemy");
-    claptrap.takeDamage(5);
-    claptrap.beRepaired(3);
-
-    return 0;
-}
+    public:
+        ScavTrap() : ClapTrap("")
+        {}
+        std::string    dd()
+        {
+            this->
+            return("nawfal rja3 rajel\n");
+        }
+};
