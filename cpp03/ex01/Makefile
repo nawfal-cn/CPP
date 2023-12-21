@@ -4,18 +4,19 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp ClapTrap.cpp
+CPPFILES = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 HEADER = ClapTrap.hpp
+HEADER2 = ScavTrap.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(CPPOBJ) $(HEADER)
+$(NAME) : $(CPPOBJ) $(HEADER) $(HEADER2)
 		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
-run : $(NAME)
+run : all
 	./$(NAME)
 
 clean :

@@ -6,19 +6,16 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/18 22:50:15 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:25:18 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string nameIn)
+ClapTrap::ClapTrap(const std::string nameIn)
+    : name(nameIn), hitPts(100), energyPts(50), attDamage(20)
 {
     std::cout<<"Constractor called"<<std::endl;
-    this->name = nameIn;
-    this->hitPts = 10;
-    this->energyPts = 10;
-    this->attDamage = 0;
 }
 
 ClapTrap::~ClapTrap()
@@ -34,7 +31,7 @@ void ClapTrap::attack(const std::string& target)
         this->energyPts -= 1;
     }   
     else
-        std::cout<<"ClapTrap can't attack because there's no Hit/Energy points left!"<<std::endl;    
+        std::cout<<"ClapTrap can't attack bc there's no Hit/Energy points left!"<<std::endl;    
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
@@ -44,7 +41,7 @@ void ClapTrap::takeDamage(unsigned int amount)
         this->hitPts -= amount;
     }
     else
-        std::cout<<"ClapTrap can't take more damage there's no Hit/Energy points left!"<<std::endl;
+        std::cout<<"ClapTrap can't take more damage bc there's no Hit/Energy points left!"<<std::endl;
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {

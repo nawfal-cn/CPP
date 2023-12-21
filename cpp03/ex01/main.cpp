@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:08:05 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/19 20:52:43 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:20:28 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 int main()
 {
-    // ClapTrap claptrap("Autron");
+    ClapTrap claptrap("CL4P-TP");
+    claptrap.attack("Corrector1");
+    claptrap.takeDamage(5);
+    claptrap.beRepaired(3);
 
-    // claptrap.attack("Enemy");
-    // claptrap.takeDamage(5);
-    // claptrap.beRepaired(3);
-    ScavTrap s;
-    // s.attack("nawfal zamal");
-    std::cout << s.print1();
+    ScavTrap scavtrap("SC4V-TP");
+    scavtrap.attack("Corrector2");
+    scavtrap.takeDamage(7);
+    scavtrap.beRepaired(4);
+    scavtrap.guardGate();
+
     return 0;
 }
