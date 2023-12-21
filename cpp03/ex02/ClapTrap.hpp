@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:08:31 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 14:55:49 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:52:03 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #define RESET   "\033[0m"
 #define YELLOW  "\033[33m"
-#define CYAN    "\033[36m"    
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
 
 #include<iostream>
 

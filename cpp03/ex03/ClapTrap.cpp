@@ -6,14 +6,14 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 14:57:34 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:57:26 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ClapTrap.hpp"
 
 ClapTrap::ClapTrap(const std::string nameIn)
-    : name(nameIn), hitPts(10), energyPts(10), attDamage(0)
+    : name(nameIn), hitPts(100), energyPts(100), attDamage(30)
 {
     std::cout<< YELLOW <<"-> Constractor called"<< RESET <<std::endl;
 }

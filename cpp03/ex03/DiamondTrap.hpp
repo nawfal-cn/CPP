@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 19:08:05 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 13:15:11 by nchaknan         ###   ########.fr       */
+/*   Created: 2023/12/21 15:04:40 by nchaknan          #+#    #+#             */
+/*   Updated: 2023/12/21 15:09:38 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef DIAMOND_TRAP_HPP
+    #define DIAMOND_TRAP_HPP
 
-int main()
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include <iostream>
+
+class DiamondTrap : public ScavTrap, public FragTrap
 {
-    ClapTrap claptrap("Autron");
-    claptrap.attack("Enemy");
-    claptrap.takeDamage(5);
-    claptrap.beRepaired(3);
+    public:
+        DiamondTrap(const std::string nameIn);
+        ~DiamondTrap();
+};
 
-    return 0;
-}
+#endif

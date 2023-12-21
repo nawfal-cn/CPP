@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 12:25:18 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:53:14 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 ClapTrap::ClapTrap(const std::string nameIn)
     : name(nameIn), hitPts(100), energyPts(50), attDamage(20)
 {
-    std::cout<<"Constractor called"<<std::endl;
+    std::cout<< YELLOW <<"-> Constractor called"<< RESET <<std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-    std::cout<<"Destractor called"<<std::endl;
+    std::cout<< YELLOW <<"-> Destractor called"<< RESET <<std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
