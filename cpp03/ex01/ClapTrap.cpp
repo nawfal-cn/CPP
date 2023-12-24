@@ -6,11 +6,21 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 14:53:14 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:53:26 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ClapTrap.hpp"
+
+ClapTrap::ClapTrap() : name("default"), hitPts(0), energyPts(0), attDamage(0)
+{
+    std::cout<< YELLOW <<"-> Default Constractor called"<< RESET <<std::endl;
+}
+
+ClapTrap::~ClapTrap()
+{
+    std::cout<< YELLOW <<"-> Destractor called"<< RESET <<std::endl;
+}
 
 ClapTrap::ClapTrap(const std::string nameIn)
     : name(nameIn), hitPts(100), energyPts(50), attDamage(20)
@@ -18,9 +28,23 @@ ClapTrap::ClapTrap(const std::string nameIn)
     std::cout<< YELLOW <<"-> Constractor called"<< RESET <<std::endl;
 }
 
-ClapTrap::~ClapTrap()
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-    std::cout<< YELLOW <<"-> Destractor called"<< RESET <<std::endl;
+    std::cout<<"Copy constructor called"<<std::endl;
+    *this = copy;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
+{
+    std::cout<<"Copy assignment operator called"<<std::endl;
+    if(this != &copy)
+    {
+        this->name = copy.name;
+        this->hitPts = copy.hitPts;
+        this->energyPts = copy.energyPts;
+        this->attDamage = copy.attDamage;
+    }
+    return (*this);    
 }
 
 void ClapTrap::attack(const std::string& target)

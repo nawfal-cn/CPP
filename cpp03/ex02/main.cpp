@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:08:05 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 16:01:20 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:14:06 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "FragTrap.hpp"
 
 int main()
-{
+{   
     ClapTrap claptrap("CL4P-TP");
     ScavTrap scavtrap("SC4V-TP");
     FragTrap fragtrap("FR4G-TP");

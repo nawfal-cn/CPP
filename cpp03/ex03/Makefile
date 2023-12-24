@@ -4,17 +4,18 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+CPPFILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 HEADER = ClapTrap.hpp
 HEADER2 = ScavTrap.hpp
 HEADER3 = FragTrap.hpp
+HEADER4 = DiamondTrap.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(CPPOBJ) $(HEADER) $(HEADER2) $(HEADER3)
+$(NAME) : $(CPPOBJ) $(HEADER) $(HEADER2) $(HEADER3) $(HEADER4)
 		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
 run : all

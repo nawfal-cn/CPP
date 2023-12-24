@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:47:44 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/21 14:35:53 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/24 18:25:46 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
     #define FRAG_TRAP_HPP
 
 #include "ClapTrap.hpp"
-#include <iostream>
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
     public:
-        FragTrap(const std::string nameIn);
+        FragTrap();
         ~FragTrap();
+        FragTrap(const std::string nameIn);
+        FragTrap(const FragTrap &copy);
+        FragTrap &operator=(const FragTrap &copy);
         void highFivesGuys(void);
 };
 
