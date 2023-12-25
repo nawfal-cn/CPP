@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 20:04:17 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/23 20:12:48 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/24 21:34:09 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
     std::cout<< CYAN << "-> ScavTrap Default Constractor called" << RESET << std::endl;
+    hitPts = 100;
+    energyPts = 50;
+    attDamage = 20;
 }
 
 ScavTrap::~ScavTrap()
@@ -25,6 +28,9 @@ ScavTrap::~ScavTrap()
 ScavTrap::ScavTrap(const std::string nameIn) : ClapTrap(nameIn)
 {
     std::cout<< CYAN << "-> ScavTrap " << nameIn << " joins the party! Let's get looting!" << RESET << std::endl;
+    hitPts = 100;
+    energyPts = 50;
+    attDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy)

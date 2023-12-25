@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:49:06 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/23 20:10:59 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/24 21:37:04 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 FragTrap::FragTrap() : ClapTrap()
 {
     std::cout<< MAGENTA <<"-> FragTrap Default Constractor called" << RESET <<std::endl;
+    hitPts = 100;
+    energyPts = 100;
+    attDamage = 30;
 }
 
 FragTrap::~FragTrap()
@@ -25,6 +28,9 @@ FragTrap::~FragTrap()
 FragTrap::FragTrap(const std::string nameIn) : ClapTrap(nameIn)
 {
     std::cout<< MAGENTA <<"-> FragTrap " << nameIn << " came for war! Let's bumb the enemies!" << RESET <<std::endl;
+    hitPts = 100;
+    energyPts = 100;
+    attDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &copy)

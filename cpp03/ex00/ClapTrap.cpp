@@ -6,13 +6,13 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 22:38:34 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/23 19:52:56 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/24 21:29:00 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("default"), hitPts(0), energyPts(0), attDamage(0)
+ClapTrap::ClapTrap() : name("default"), hitPts(10), energyPts(10), attDamage(0)
 {
     std::cout<< YELLOW <<"-> Default Constractor called"<< RESET <<std::endl;
 }
