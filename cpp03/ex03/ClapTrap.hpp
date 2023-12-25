@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:08:31 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/25 10:53:50 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/25 11:26:42 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define YELLOW  "\033[33m"
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
+#define GREEN   "\033[32m"
 
 #include<iostream>
 

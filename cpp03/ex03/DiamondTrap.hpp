@@ -6,15 +6,12 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:04:40 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/25 11:02:26 by nchaknan         ###   ########.fr       */
+/*   Updated: 2023/12/25 11:26:46 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMOND_TRAP_HPP
     #define DIAMOND_TRAP_HPP
-
-#define GREEN   "\033[32m"
-#define RED     "\033[31m"
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
