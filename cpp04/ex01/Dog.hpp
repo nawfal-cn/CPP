@@ -6,7 +6,7 @@
 /*   By: nchaknan <nchaknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:01:02 by nchaknan          #+#    #+#             */
-/*   Updated: 2023/12/31 16:05:19 by nchaknan         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:19:00 by nchaknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,3 @@ class Dog : public Animal
   };
 
 #endif
-
-// Dog *dog = new Dog();
-// Dog *d = new Dog(dog);
