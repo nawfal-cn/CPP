@@ -4,9 +4,9 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp AMateria.cpp
+CPPFILES = main.cpp AMateria.cpp Ice.cpp Cure.cpp
 
-HEADER = AMateria.hpp
+HEADER = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
@@ -24,6 +24,6 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 
-re : fclean all
+re : fclean all run
 
 .PHONY = all clean fclean re

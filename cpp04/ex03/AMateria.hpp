@@ -1,11 +1,12 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
+#include "ICharacter.hpp"
 #include <iostream>
 
 class AMateria
 {
-	private :
+	protected :
 		std::string const type;
 	public :
 		AMateria();
@@ -16,7 +17,7 @@ class AMateria
 		
 		std::string const &getType() const; //Returns the materia type
 		virtual AMateria *clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target) = 0;
 };
 
 #endif
