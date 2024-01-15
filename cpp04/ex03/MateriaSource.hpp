@@ -7,7 +7,7 @@
 class MateriaSource : public IMateriaSource
 {
 	private :
-		// put your private attributes here
+		AMateria* learnedMaterias[4];
 	public :
 		MateriaSource();
 		~MateriaSource();

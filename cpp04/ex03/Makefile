@@ -1,12 +1,12 @@
-NAME = Animal
+NAME = Materia
 
 CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp AMateria.cpp Ice.cpp Cure.cpp
+CPPFILES = AMateria.cpp Cure.cpp MateriaSource.cpp Character.cpp Ice.cpp main.cpp
 
-HEADER = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp
+HEADER = AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp IMateriaSource.hpp Ice.hpp MateriaSource.hpp 
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
@@ -24,6 +24,6 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 
-re : fclean all run
+re : fclean all 
 
 .PHONY = all clean fclean re
