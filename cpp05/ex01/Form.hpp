@@ -4,18 +4,20 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+class Bureaucrat;
+
 class Form
 {
 	private :
 		std::string const name;
-		bool is_signed;
+		bool sign_status;
 		int const sign_grade;
 		int const exec_grade;
 	public :
 		Form();
 		~Form();
-		Form(std::string nameIn, int sign_gradeIn);
-		Form(Form const &copy);
+		Form(std::string nameIn, int sign_gradeIn, int exec_gradeIn);
+		Form(Form const &copy, int sign_gradeIn, int exec_gradeIn);
 		Form &operator=(Form const &other);
 		std::string getName() const;
 		bool getIfSigned() const;

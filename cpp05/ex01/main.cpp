@@ -1,24 +1,25 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-    try
-    {
-        Bureaucrat bureaucrat("John Doe", 50);
-        std::cout << bureaucrat << std::endl;
 
-        bureaucrat.increaseGrade();
-        std::cout << bureaucrat << std::endl;
+    try {
+        Bureaucrat bureaucrat("John", 50);
+        Form form("Income Tax", 30, 40);
 
-        bureaucrat.decreaseGrade();
+        std::cout << "-------------------------------" << std::endl;
         std::cout << bureaucrat << std::endl;
+        std::cout << form << std::endl;
+        std::cout << "-------------------------------" << std::endl;
+        bureaucrat.signForm(form);
+        std::cout << "-------------------------------" << std::endl;
+        // Trying to sign the form with a bureaucrat of no grade
+        Bureaucrat noGradeBureaucrat;
+        Form form2("TVA", 15, 60);
+        noGradeBureaucrat.signForm(form2);
+        std::cout << "-------------------------------" << std::endl;
 
-        // Attempting to create a bureaucrat with an invalid grade
-        Bureaucrat invalidBureaucrat("Invalid", 160);
-    }
-    
-    catch (const std::exception& e)
-    {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
 
     return 0;

@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("default"), grade(0)
+Bureaucrat::Bureaucrat() : name("Default"), grade(0)
 {
 	std::cout<< "Bureaucrat Created." << std::endl;
 }
@@ -61,6 +61,15 @@ void Bureaucrat::decreaseGrade()
 		throw GradeTooLowException();
 	else	
 		this->grade += 1;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+	form.beSigned(*this);
+	if(form.getIfSigned())
+		std::cout<< this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cerr<< this->getName() << " couldn't sign " << form.getName() << " because it doesn't have a proper grade" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat &obj)
