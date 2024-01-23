@@ -1,6 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
+		: AForm("ShrubberyCreationForm", 145, 137), target("Default")
 {
 	std::cout<< "ShrubberyCreationForm Created." << std::endl;
 }
@@ -8,6 +9,12 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 	std::cout<< "ShrubberyCreationForm Destroyed." << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &targetIn)
+		: AForm("ShrubberyCreationForm", 145, 137), target(targetIn)
+{
+	std::cout<< "ShrubberyCreationForm Created." << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)

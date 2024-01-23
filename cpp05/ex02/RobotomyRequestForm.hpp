@@ -1,15 +1,17 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
 	private :
-		// put your private attributes here
+		std::string target;
 	public :
 		RobotomyRequestForm();
 		~RobotomyRequestForm();
+		RobotomyRequestForm(std::string &targetIn);
 		RobotomyRequestForm(RobotomyRequestForm const &copy);
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
 };

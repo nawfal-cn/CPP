@@ -1,15 +1,17 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 
-class ShrubberyCreationForm
+class ShrubberyCreationForm : public AForm
 {
 	private :
-		// put your private attributes here
+		std::string const target;
 	public :
 		ShrubberyCreationForm();
 		~ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string &targetIn);
 		ShrubberyCreationForm(ShrubberyCreationForm const &copy);
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
 };

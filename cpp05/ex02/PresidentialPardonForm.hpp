@@ -1,15 +1,17 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
 	private :
-		// put your private attributes here
+		std::string target;
 	public :
 		PresidentialPardonForm();
 		~PresidentialPardonForm();
+		PresidentialPardonForm(std::string &targetIn);
 		PresidentialPardonForm(PresidentialPardonForm const &copy);
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
 };

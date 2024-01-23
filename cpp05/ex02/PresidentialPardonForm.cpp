@@ -1,6 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
+		: AForm("PresidentialPardonForm", 25, 5), target("Default")
 {
 	std::cout<< "PresidentialPardonForm Created." << std::endl;
 }
@@ -8,6 +9,12 @@ PresidentialPardonForm::PresidentialPardonForm()
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cout<< "PresidentialPardonForm Destroyed." << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string &targetIn)
+		: AForm("PresidentialPardonForm", 25, 5), target(targetIn)
+{
+	std::cout<< "PresidentialPardonForm Created." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy)
