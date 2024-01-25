@@ -1,19 +1,12 @@
 #include "Form.hpp"
 
-Form::Form() : name("Default"), sign_status(false), sign_grade(0), exec_grade(0)
-{
-	std::cout<< "Form Created." << std::endl;
-}
+Form::Form() : name("Default"), sign_status(false), sign_grade(0), exec_grade(0) {}
 
-Form::~Form()
-{
-	std::cout<< "Form Destroyed." << std::endl;
-}
+Form::~Form() {}
 
 Form::Form(std::string nameIn, int sign_gradeIn, int exec_gradeIn)
 	: name(nameIn), sign_status(false), sign_grade(sign_gradeIn), exec_grade(exec_gradeIn)
 {
-	std::cout<< "Form Created." << std::endl;
 	if(sign_grade < 1 || exec_grade < 1)
 		throw GradeTooHighException();
 	else if(sign_grade > 150 || exec_grade > 150)
@@ -24,13 +17,11 @@ Form::Form(std::string nameIn, int sign_gradeIn, int exec_gradeIn)
 Form::Form(Form const &copy, int sign_gradeIn, int exec_gradeIn)
 	: sign_grade(sign_gradeIn), exec_grade(exec_gradeIn)
 {
-	std::cout<< "Creating a copy of Form." << std::endl;
 	*this = copy;
 }
 
 Form &Form::operator=(Form const &other)
 {
-	std::cout<< "Assigning a copy of Form." << std::endl;
 	if(this != &other)
 	{
 		this->sign_status = other.sign_status;

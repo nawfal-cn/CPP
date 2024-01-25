@@ -3,6 +3,8 @@
 
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <fstream>
+#include <ctime>
 
 class Bureaucrat;
 
@@ -31,7 +33,7 @@ class AForm
 			public:
 				virtual const char* what() const throw() { return "Grade is too low"; }
 		};
-		virtual void abstract() = 0;
+		virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream& os, const AForm &obj);

@@ -4,9 +4,9 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp Bureaucrat.cpp AForm.cpp
+CPPFILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
-HEADER = Bureaucrat.hpp AForm.cpp
+HEADER = Bureaucrat.hpp AForm.cpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 

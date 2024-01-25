@@ -1,18 +1,11 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(0)
-{
-	std::cout<< "Bureaucrat Created." << std::endl;
-}
+Bureaucrat::Bureaucrat() : name("Default"), grade(0) {}
 
-Bureaucrat::~Bureaucrat()
-{
-	std::cout<< "Bureaucrat Destroyed." << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string const nameIn, int gradeIn) : name(nameIn)
 {
-	std::cout<< "Bureaucrat Created." << std::endl;
 	if(gradeIn < 1)
 		throw GradeTooLowException();
 	else if(gradeIn > 150)
@@ -23,13 +16,11 @@ Bureaucrat::Bureaucrat(std::string const nameIn, int gradeIn) : name(nameIn)
 
 Bureaucrat::Bureaucrat(Bureaucrat const &copy)
 {
-	std::cout<< "Creating a copy of Bureaucrat." << std::endl;
 	*this = copy;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 {
-	std::cout<< "Assigning a copy of Bureaucrat." << std::endl;
 	if(this != &other)
 	{
 		this->grade = other.grade;
@@ -65,11 +56,23 @@ void Bureaucrat::decreaseGrade()
 
 void Bureaucrat::signForm(AForm &form)
 {
-	form.beSigned(*this);
-	if(form.getIfSigned())
-		std::cout<< this->getName() << " signed " << form.getName() << std::endl;
-	else
-		std::cerr<< this->getName() << " couldn't sign " << form.getName() << " because it doesn't have a proper grade" << std::endl;
+	try {
+		form.beSigned(*this);
+		if(form.getIfSigned())
+			std::cout<< this->getName() << " signed " << form.getName() << std::endl;
+	} catch(const std::exception &e) {
+		std::cerr<< this->getName() << " couldn't sign " << form.getName() << " because of" << e.what() <<std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+		std::cout<< getName() << " executed " << form.getName() << std::endl;
+	} catch(const std::exception &e){
+		std::cerr<< getName() << " couldn't execute "<< form.getName() << " because of " << e.what() <<std::endl;
+	}
 }
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat &obj)

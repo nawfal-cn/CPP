@@ -1,19 +1,12 @@
 #include "AForm.hpp"
 
-AForm::AForm() : name("Default"), sign_status(false), sign_grade(0), exec_grade(0)
-{
-	std::cout<< "AForm Created." << std::endl;
-}
+AForm::AForm() : name("Default"), sign_status(false), sign_grade(0), exec_grade(0) {}
 
-AForm::~AForm()
-{
-	std::cout<< "AForm Destroyed." << std::endl;
-}
+AForm::~AForm() {}
 
 AForm::AForm(std::string nameIn, int sign_gradeIn, int exec_gradeIn)
 	: name(nameIn), sign_status(false), sign_grade(sign_gradeIn), exec_grade(exec_gradeIn)
 {
-	std::cout<< "AForm Created." << std::endl;
 	if(sign_grade < 1 || exec_grade < 1)
 		throw GradeTooHighException();
 	else if(sign_grade > 150 || exec_grade > 150)
@@ -24,13 +17,11 @@ AForm::AForm(std::string nameIn, int sign_gradeIn, int exec_gradeIn)
 AForm::AForm(AForm const &copy, int sign_gradeIn, int exec_gradeIn)
 	: sign_grade(sign_gradeIn), exec_grade(exec_gradeIn)
 {
-	std::cout<< "Creating a copy of AForm." << std::endl;
 	*this = copy;
 }
 
 AForm &AForm::operator=(AForm const &other)
 {
-	std::cout<< "Assigning a copy of AForm." << std::endl;
 	if(this != &other)
 	{
 		this->sign_status = other.sign_status;

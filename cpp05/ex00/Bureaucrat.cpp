@@ -1,18 +1,11 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("default"), grade(0)
-{
-	std::cout<< "Bureaucrat Created." << std::endl;
-}
+Bureaucrat::Bureaucrat() : name("default"), grade(0) {}
 
-Bureaucrat::~Bureaucrat()
-{
-	std::cout<< "Bureaucrat Destroyed." << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string const nameIn, int gradeIn) : name(nameIn)
 {
-	std::cout<< "Bureaucrat Created." << std::endl;
 	if(gradeIn < 1)
 		throw GradeTooLowException();
 	else if(gradeIn > 150)
@@ -23,13 +16,11 @@ Bureaucrat::Bureaucrat(std::string const nameIn, int gradeIn) : name(nameIn)
 
 Bureaucrat::Bureaucrat(Bureaucrat const &copy)
 {
-	std::cout<< "Creating a copy of Bureaucrat." << std::endl;
 	*this = copy;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 {
-	std::cout<< "Assigning a copy of Bureaucrat." << std::endl;
 	if(this != &other)
 	{
 		this->grade = other.grade;
