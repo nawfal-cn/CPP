@@ -1,8 +1,14 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 #include <stdexcept>
+
+class AForm;
 
 class Bureaucrat
 {
@@ -19,12 +25,14 @@ class Bureaucrat
 		int getGrade() const;
 		void increaseGrade();
 		void decreaseGrade();
+		void signForm(AForm &form);
 		class GradeTooHighException : public std::exception {
 			public: virtual const char* what() const throw() { return "Grade is too high"; }
 		};
 		class GradeTooLowException : public std::exception {
 			public: virtual const char* what() const throw() { return "Grade is too low"; }
 		};
+		void executeForm(AForm const & form);
 };
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat& obj);

@@ -27,8 +27,7 @@ class Bureaucrat
 			public: virtual const char* what() const throw() { return "Grade is too high"; }
 		};
 		class GradeTooLowException : public std::exception {
-			public:
-				virtual const char* what() const throw() { return "Grade is too low"; }
+			public: virtual const char* what() const throw() { return "Grade is too low"; }
 		};
 		void executeForm(AForm const & form);
 };

@@ -9,7 +9,7 @@ int main()
         Bureaucrat bureaucrat("John", 30);
         
         ShrubberyCreationForm shrubberyForm("home");
-        RobotomyRequestForm robotomyForm("John's neighbor");
+        RobotomyRequestForm robotomyForm("syborg");
         PresidentialPardonForm pardonForm("criminal");
 
         bureaucrat.signForm(shrubberyForm);
