@@ -1,9 +1,13 @@
 #ifndef INTERN_HPP
 #define INTERN_HPP
 
-#include "AForm.hpp"
+// #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include <iostream>
 #include <stdexcept>
+
 
 class Intern
 {

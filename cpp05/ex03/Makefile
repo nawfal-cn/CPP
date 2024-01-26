@@ -15,7 +15,8 @@ all : $(NAME)
 $(NAME) : $(CPPOBJ) $(HEADER)
 		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
-run : $(NAME)
+run : $(NAME) clean
+	clear
 	./$(NAME)
 
 clean :

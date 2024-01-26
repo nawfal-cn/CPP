@@ -11,7 +11,7 @@ int main() {
         bureaucrat.decreaseGrade();
         std::cout << bureaucrat << std::endl;
 
-        // Attempting to create a bureaucrat with an invalid grade
+        // create a bureaucrat with an invalid grade
         Bureaucrat invalidBureaucrat("Invalid", 160);
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;

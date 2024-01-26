@@ -36,4 +36,6 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget)
 		default: throw UnknownFormName();
 	}
 	std::cout<< "Intern creates " << formName << std::endl;
+	
+	return form;
 }

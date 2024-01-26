@@ -3,8 +3,8 @@
 int main() {
 
     try {
-        Bureaucrat bureaucrat("John", 50);
-        Form form("Income Tax", 30, 40);
+        Bureaucrat bureaucrat("John", 30);
+        Form form("Income Tax", 35, 40);
 
         std::cout << "-------------------------------" << std::endl;
         std::cout << bureaucrat << std::endl;
@@ -12,9 +12,9 @@ int main() {
         std::cout << "-------------------------------" << std::endl;
         bureaucrat.signForm(form);
         std::cout << "-------------------------------" << std::endl;
-        // Trying to sign the form with a bureaucrat of no grade
-        Bureaucrat noGradeBureaucrat;
-        Form form2("TVA", 15, 60);
+        // Trying to sign the form with a bureaucrat of low grade
+        Bureaucrat noGradeBureaucrat("Amir", 100);
+        Form form2("TVA", 40, 60);
         noGradeBureaucrat.signForm(form2);
         std::cout << "-------------------------------" << std::endl;
 

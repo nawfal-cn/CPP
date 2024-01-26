@@ -17,7 +17,7 @@ class AForm
 		int const exec_grade;
 	public :
 		AForm();
-		~AForm();
+		virtual ~AForm();
 		AForm(std::string nameIn, int sign_gradeIn, int exec_gradeIn);
 		AForm(AForm const &copy, int sign_gradeIn, int exec_gradeIn);
 		AForm &operator=(AForm const &other);
