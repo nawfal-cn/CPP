@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-AForm::AForm() : name("Default"), sign_status(false), sign_grade(0), exec_grade(0) {}
+AForm::AForm() : name("Default"), sign_status(false), sign_grade(150), exec_grade(150) {}
 
 AForm::~AForm() {}
 
@@ -14,8 +14,7 @@ AForm::AForm(std::string nameIn, int sign_gradeIn, int exec_gradeIn)
 }
 
 
-AForm::AForm(AForm const &copy, int sign_gradeIn, int exec_gradeIn)
-	: sign_grade(sign_gradeIn), exec_grade(exec_gradeIn)
+AForm::AForm(AForm const &copy) : sign_grade(getSignGrade()), exec_grade(getExecGrade())
 {
 	*this = copy;
 }
@@ -47,6 +46,16 @@ int AForm::getSignGrade() const
 int AForm::getExecGrade() const
 {
 	return (this->exec_grade);
+}
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+	return ("Grade is too high");
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+	return ("Grade is too Low");
 }
 
 void AForm::beSigned(Bureaucrat &bureaucrat)

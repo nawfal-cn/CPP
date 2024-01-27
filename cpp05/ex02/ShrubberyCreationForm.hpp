@@ -7,7 +7,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	private :
-		std::string const target;
+		std::string target;
 	public :
 		ShrubberyCreationForm();
 		~ShrubberyCreationForm();

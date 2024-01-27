@@ -17,7 +17,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 {
 	if(this != &other)
 	{
-		// copy your attributes here
+		this->target = other.target;
 	}
 	return(*this);
 }
@@ -26,7 +26,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if(getIfSigned() && executor.getGrade() <= getExecGrade())
 	{
-		srand(time(0)); // Seed for random number generation
+		srand(time(0));
 		std::cout << "Drilling noises..." << std::endl;
 		if (rand() % 2 == 0) {
 			std::cout << target << " has been robotomized successfully!" << std::endl;

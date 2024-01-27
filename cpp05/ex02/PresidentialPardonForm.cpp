@@ -17,7 +17,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 {
 	if(this != &other)
 	{
-		// copy your attributes here
+		this->target = other.target;
 	}
 	return(*this);
 }
