@@ -18,6 +18,11 @@ Intern &Intern::operator=(Intern const &other)
 	return(*this);
 }
 
+const char* Intern::UnknownFormName::what() const throw()
+{
+	return ("Unknown form name");
+}
+
 AForm *Intern::makeForm(std::string formName, std::string formTarget)
 {
 	AForm *form = NULL;

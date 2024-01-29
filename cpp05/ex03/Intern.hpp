@@ -20,7 +20,7 @@ class Intern
 		Intern &operator=(Intern const &other);
 		AForm *makeForm(std::string name, std::string target);
 		class UnknownFormName : public std::exception {
-			public : virtual const char* what() const throw() { return"Unknown form name"; }
+			public : virtual const char* what() const throw();
 		};
 };
 
