@@ -28,37 +28,27 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
 
 void ScalarConverter::convert(std::string input)
 {
-	char myChar = 'c';
-	int myInt = 0;
-	// float myFloat = 1.1;
-	// double myDouble = 2.2;
-
 	// convert to char
-	std::istringstream charStream(input);
-	if(!(charStream >> myChar))
-		std::cout << "Char: failed!" << std::endl;
-	else
-		std::cout << "Char: " << myChar << std::endl;
+	{
+		char myChar;
+		if(input.length() == 1)
+		{
+			if(isalpha(input[0]))
+				std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
+			else if(isdigit(input[0]))
+				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
+		}
+		else
+		{
+			int i = std::atoi(input.c_str());
+			myChar = static_cast<char>(i);
+			if(!isprint(myChar))
+				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
+			else
+				std::cout<< "Char: \'" << myChar << "\'" << std::endl;
 
+		}
+	}
 
 	// convert to int
-	myInt = std::atoi(input.c_str());
-	// if(0)
-	// 	std::cout << "Int: failed!" << std::endl;
-	// else
-		std::cout << "Int: " << myInt << std::endl;
-	
-
-	// convert to float
-	// if(0)
-	// 	std::cout << "Float: failed!" << std::endl;
-	// else	
-	// 	std::cout << "Float: " << myFloat << std::endl;
-	
-
-	// // convert to double
-	// if(0)
-	// 	std::cout << "Double: failed!" << std::endl;
-	// else
-	// 	std::cout << "Double: " << myDouble << std::endl;
 }
