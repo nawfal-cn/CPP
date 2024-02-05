@@ -37,6 +37,8 @@ void ScalarConverter::convert(std::string input)
 				std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
 			else if(isdigit(input[0]))
 				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
+			else if(isprint(input[0]))
+				std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
 		}
 		else
 		{
@@ -46,9 +48,30 @@ void ScalarConverter::convert(std::string input)
 				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
 			else
 				std::cout<< "Char: \'" << myChar << "\'" << std::endl;
-
 		}
 	}
 
 	// convert to int
+	{
+		// int myInt;
+		if(input.length() == 1)
+		{
+			if(isnumber(input[0]))
+				std::cout<< "Int: " << input[0] <<std::endl;
+			else if(isprint(input[0]))
+				std::cout<< "Int: " << static_cast<int>(input[0]) << std::endl;
+			else
+				std::cout<< "Int: unprintable" <<std::endl;	
+		}
+	}
 }
+
+		// int myInt;
+		// unsigned long i;
+		// for(i = 0; i < input.length(); i++)
+		// 	if(!isnumber(input[i]))
+		// 		break;
+		// if(i == input.length())
+		// {
+		// 	std::cout<< "Int: " << input << std::endl;
+		// }
