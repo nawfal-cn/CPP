@@ -29,49 +29,14 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
 void ScalarConverter::convert(std::string input)
 {
 	// convert to char
-	{
-		char myChar;
-		if(input.length() == 1)
-		{
-			if(isalpha(input[0]))
-				std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
-			else if(isdigit(input[0]))
-				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
-			else if(isprint(input[0]))
-				std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
-		}
-		else
-		{
-			int i = std::atoi(input.c_str());
-			myChar = static_cast<char>(i);
-			if(!isprint(myChar))
-				std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
-			else
-				std::cout<< "Char: \'" << myChar << "\'" << std::endl;
-		}
-	}
+	ScalarConverter::toChar(input);
 
 	// convert to int
-	{
-		// int myInt;
-		if(input.length() == 1)
-		{
-			if(isnumber(input[0]))
-				std::cout<< "Int: " << input[0] <<std::endl;
-			else if(isprint(input[0]))
-				std::cout<< "Int: " << static_cast<int>(input[0]) << std::endl;
-			else
-				std::cout<< "Int: unprintable" <<std::endl;	
-		}
-	}
-}
+	ScalarConverter::toInt(input);
 
-		// int myInt;
-		// unsigned long i;
-		// for(i = 0; i < input.length(); i++)
-		// 	if(!isnumber(input[i]))
-		// 		break;
-		// if(i == input.length())
-		// {
-		// 	std::cout<< "Int: " << input << std::endl;
-		// }
+	// convert to float
+	ScalarConverter::toFloat(input);
+
+	// convert to double
+	ScalarConverter::toDouble(input);
+}

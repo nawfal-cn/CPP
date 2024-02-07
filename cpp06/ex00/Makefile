@@ -4,7 +4,7 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp ScalarConverter.cpp
+CPPFILES = main.cpp ScalarConverter.cpp converting.cpp
 
 HEADER = ScalarConverter.hpp
 
