@@ -38,5 +38,5 @@ void ScalarConverter::convert(std::string input)
 	ScalarConverter::toFloat(input);
 
 	// convert to double
-	// ScalarConverter::toDouble(input);
+	ScalarConverter::toDouble(input);
 }

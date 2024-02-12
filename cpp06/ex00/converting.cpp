@@ -1,13 +1,5 @@
 #include "ScalarConverter.hpp"
 
-bool isnum(std::string &input)
-{
-	for(unsigned int i = 0; i < input.length(); i++)
-		if(!isnumber(input[i]))
-			return false;
-	return true;		
-}
-
 bool isfloat(std::string &input)
 {
 	if(input[input.length() - 1] == 'f')
@@ -51,6 +43,9 @@ void ScalarConverter::toChar(std::string &input)
 
 void ScalarConverter::toInt(std::string &input)
 {
+	std::istringstream iss(input);
+	int myInt;
+
 	if(input.length() == 1)
 	{
 		if(isnumber(input[0]))
@@ -60,8 +55,10 @@ void ScalarConverter::toInt(std::string &input)
 	}
 	else
 	{
-		if(isfloat(input))
+		if(isfloat(input) && (iss >> myInt && myInt <= INT_MAX && myInt >= INT_MIN))
+		{
 			std::cout<< "Int: " << std::atoi(input.c_str()) << std::endl;
+		}
 		else
 			std::cout<< "Int: error" <<std::endl;
 	}
@@ -69,7 +66,8 @@ void ScalarConverter::toInt(std::string &input)
 
 void ScalarConverter::toFloat(std::string &input)
 {
-	// float myFloat;
+	std::istringstream iss(input);
+	float myFloat;
 
 	if(input.length() == 1)
 	{
@@ -80,7 +78,9 @@ void ScalarConverter::toFloat(std::string &input)
 	}
 	else
 	{
-		if(isfloat(input))
+		float fmax = std::numeric_limits<float>::max();
+		float fmin = std::numeric_limits<float>::min();
+		if(isfloat(input) && (iss >> myFloat && myFloat <= fmax && myFloat >= fmin))
 		{
 			if(std::atof(input.c_str()) == static_cast<int>(std::atof(input.c_str())))
 				std::cout<< "Float: " << std::atof(input.c_str()) << ".0f" <<std::endl;
@@ -99,15 +99,22 @@ void ScalarConverter::toDouble(std::string &input)
 
 	if(input.length() == 1)
 	{
-		if(iss >> myDouble)
-			std::cout<< "Double: " << myDouble <<std::endl;
+		if(isnumber(input[0]))
+			std::cout<< "Double: " << input[0] << ".0" <<std::endl;
 		else
-			std::cout<< "Double: " << static_cast<double>(input[0]) << std::endl;
+			std::cout<< "Double: " << static_cast<double>(input[0]) << ".0" << std::endl;
 	}
 	else
 	{
-		if(isfloat(input) && (iss >> myDouble))
-			std::cout<< "Double: " << myDouble <<std::endl;
+		double dmax = std::numeric_limits<double>::max();
+		double dmin = std::numeric_limits<double>::min();
+		if(isfloat(input) && (iss >> myDouble && myDouble <= dmax && myDouble >= dmin))
+		{
+			if(myDouble == static_cast<int>(myDouble))
+				std::cout<< "Double: " << myDouble << ".0" <<std::endl;
+			else	
+				std::cout<< "Double: " << myDouble <<std::endl;
+		}
 		else
 			std::cout<< "Double: error" <<std::endl;
 	}
