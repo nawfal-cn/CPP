@@ -1,11 +1,21 @@
 #include "ScalarConverter.hpp"
 
+bool isnum(std::string &input)
+{
+	for(unsigned int i = 0; i < input.length(); i++)
+		if(!isnumber(input[i]))
+			return false;
+	return true;		
+}
+
 bool isfloat(std::string &input)
 {
+	if(input[input.length() - 1] == 'f')
+		input.erase(input.length() - 1);
 	int points = 0;
 	for(unsigned long i = 0; i < input.length(); i++)
 	{
-		if(!isnumber(input[i]) && input[i] != '.')
+		if(!isnumber(input[i]) && input[i] != '.' && input[i] != '+' && input[i] != '-')
 			return false;
 		else if(input[i] == '.')
 		{
@@ -19,22 +29,21 @@ bool isfloat(std::string &input)
 
 void ScalarConverter::toChar(std::string &input)
 {
-	std::istringstream iss(input);
-    char myChar;
+    char myChar = '\0';
 
     if(input.length() == 1)
     {
         if(isdigit(input[0]))
-            std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
-        else if(iss >> myChar)
+            std::cout<< "Char: \'" << "error" << "\'" << std::endl;
+        else if(isalpha(input[0]))
             std::cout<< "Char: \'" << input[0] << "\'" << std::endl;
     }
     else
     {
-        int i = std::atoi(input.c_str());
-        myChar = static_cast<char>(i);
+		if(isfloat(input))
+			myChar = static_cast<char>(std::atoi(input.c_str()));
         if(!isprint(myChar))
-            std::cout<< "Char: \'" << "unprintable" << "\'" << std::endl;
+            std::cout<< "Char: \'" << "error" << "\'" << std::endl;
         else
             std::cout<< "Char: \'" << myChar << "\'" << std::endl;
     }
@@ -42,43 +51,44 @@ void ScalarConverter::toChar(std::string &input)
 
 void ScalarConverter::toInt(std::string &input)
 {
-	std::istringstream iss(input);
-	int myInt;
-	
 	if(input.length() == 1)
 	{
-		if(iss >> myInt)
-			std::cout<< "Int: " << myInt <<std::endl;
+		if(isnumber(input[0]))
+			std::cout<< "Int: " << input[0] <<std::endl;
 		else
 			std::cout<< "Int: " << static_cast<int>(input[0]) << std::endl;
 	}
 	else
 	{
-		if(isfloat(input)&& (iss >> myInt))
-			std::cout<< "Int: " << myInt << std::endl;
+		if(isfloat(input))
+			std::cout<< "Int: " << std::atoi(input.c_str()) << std::endl;
 		else
-			std::cout<< "Int: impossible" <<std::endl;
+			std::cout<< "Int: error" <<std::endl;
 	}
 }
 
 void ScalarConverter::toFloat(std::string &input)
 {
-	std::istringstream iss(input);
-	float myFloat;
+	// float myFloat;
 
 	if(input.length() == 1)
 	{
-		if(iss >> myFloat)
-			std::cout<< "Float: " << myFloat <<std::endl;
+		if(isnumber(input[0]))
+				std::cout<< "Float: " << input[0] << ".0f" <<std::endl;
 		else
-			std::cout<< "Float: " << static_cast<float>(input[0]) << std::endl;
+			std::cout<< "Float: " << static_cast<float>(input[0]) << ".0f" << std::endl;
 	}
 	else
 	{
-		if(isfloat(input) && (iss >> myFloat))
-			std::cout<< "Float: " << myFloat <<std::endl;
+		if(isfloat(input))
+		{
+			if(std::atof(input.c_str()) == static_cast<int>(std::atof(input.c_str())))
+				std::cout<< "Float: " << std::atof(input.c_str()) << ".0f" <<std::endl;
+			else	
+				std::cout<< "Float: " << std::atof(input.c_str()) << "f" <<std::endl;
+		}
 		else
-			std::cout<< "Float: impossible" <<std::endl;
+			std::cout<< "Float: error" <<std::endl;
 	}
 }
 
@@ -99,6 +109,6 @@ void ScalarConverter::toDouble(std::string &input)
 		if(isfloat(input) && (iss >> myDouble))
 			std::cout<< "Double: " << myDouble <<std::endl;
 		else
-			std::cout<< "Double: impossible" <<std::endl;
+			std::cout<< "Double: error" <<std::endl;
 	}
 }
