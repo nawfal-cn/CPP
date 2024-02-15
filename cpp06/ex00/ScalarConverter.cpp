@@ -28,6 +28,7 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
 
 void ScalarConverter::convert(std::string input)
 {
+	// float f = .f;
 	// convert to char
 	ScalarConverter::toChar(input);
 
