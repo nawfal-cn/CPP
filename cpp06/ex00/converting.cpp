@@ -1,57 +1,10 @@
 #include "ScalarConverter.hpp"
 
-bool isFinites(std::string &input)
+void toChar(std::string &input)
 {
-	if(input == "inff" || input == "+inff" || input == "-inff" || input == "nanf")
-		return true;
-	if(input == "inf" || input == "+inf" || input == "-inf" || input == "nan")
-		return true;
-	return false;
-}
-
-void printFinite(std::string &input, int flag)
-{
-	if(flag)
-		std::cout<<"Float: ";
-	else if(!flag)
-		std::cout<<"Double: ";
-
-	if(input == "inff" || input == "inf" || input == "+inff" || input == "+inf")
-		std::cout<< "inf";
-	else if(input == "-inff" || input == "-inf")
-		std::cout<< "-inf";
-	else if(input == "nanf" || input == "nan")
-		std::cout<< "nan";
-
-	if(flag)
-		std::cout<<'f';
-	std::cout<<std::endl;	
-}
-
-bool isValideNum(std::string &input)
-{
-	if(input[input.length() - 1] == 'f')
-		input.erase(input.length() - 1);
-	int points = 0;
-	for(unsigned long i = 0; i < input.length(); i++)
-	{
-		if(!isnumber(input[i]) && input[i] != '.' && input[i] != '+' && input[i] != '-')
-			return false;
-		if(i > 0 && (input[i] == '+' || input[i] == '-'))
-			return false;
-		if(input[i] == '.')
-		{
-			points++;
-			if(points > 1)
-				return false;
-		}
-	}
-	return true;
-}
-
-void ScalarConverter::toChar(std::string &input)
-{
-    if(input.length() == 1)
+	if(input.length() == 0)
+		std::cout<< "Char: " << "Non displayable" << std::endl;
+    else if(input.length() == 1)
     {
         if(isdigit(input[0]))
             std::cout<< "Char: " << "Non displayable" << std::endl;
@@ -74,12 +27,14 @@ void ScalarConverter::toChar(std::string &input)
     }
 }
 
-void ScalarConverter::toInt(std::string &input)
+void toInt(std::string &input)
 {
-	// std::istringstream iss(input);
+	std::istringstream iss(input);
 	int myInt;
 
-	if(input.length() == 1)
+	if(input.length() == 0)
+		std::cout<< "Int: " << "0" << std::endl;
+    else if(input.length() == 1)
 	{
 		if(isnumber(input[0]))
 			std::cout<< "Int: " << input[0] <<std::endl;
@@ -89,21 +44,21 @@ void ScalarConverter::toInt(std::string &input)
 	else
 	{
 		myInt = std::atoi(input.c_str());
-		// std::cout << myInt << std::endl;
 		if(isValideNum(input) && (myInt <= INT_MAX && myInt >= INT_MIN))
-			// std::cout<< "Int: " << std::atoi(input.c_str()) << std::endl;
 			std::cout<< "Int: " << myInt << std::endl;
 		else
 			std::cout<< "Int: impossible" <<std::endl;
 	}
 }
 
-void ScalarConverter::toFloat(std::string &input)
+void toFloat(std::string &input)
 {
 	std::istringstream iss(input);
 	float myFloat;
 
-	if(input.length() == 1)
+	if(input.length() == 0)
+		std::cout<< "Float: " << "0.0f" << std::endl;
+    else if(input.length() == 1)
 	{
 		if(isnumber(input[0]))
 				std::cout<< "Float: " << input[0] << ".0f" <<std::endl;
@@ -112,6 +67,7 @@ void ScalarConverter::toFloat(std::string &input)
 	}
 	else
 	{
+		// std::cout<< (isFinites(input)) << std::endl;
 		if(isFinites(input))
 			printFinite(input, 1);
 		else
@@ -130,12 +86,14 @@ void ScalarConverter::toFloat(std::string &input)
 	}
 }
 
-void ScalarConverter::toDouble(std::string &input)
+void toDouble(std::string &input)
 {
     std::istringstream iss(input);
 	double myDouble;
 
-	if(input.length() == 1)
+	if(input.length() == 0)
+		std::cout<< "Double: " << "0.0" << std::endl;
+    else if(input.length() == 1)
 	{
 		if(isnumber(input[0]))
 			std::cout<< "Double: " << input[0] << ".0" <<std::endl;

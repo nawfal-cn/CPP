@@ -28,16 +28,12 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
 
 void ScalarConverter::convert(std::string input)
 {
-	// float f = .f;
 	// convert to char
-	ScalarConverter::toChar(input);
-
+	toChar(input);
 	// convert to int
-	ScalarConverter::toInt(input);
-
+	toInt(input);
 	// convert to float
-	ScalarConverter::toFloat(input);
-
+	toFloat(input);
 	// convert to double
-	ScalarConverter::toDouble(input);
+	toDouble(input);
 }

@@ -16,10 +16,16 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &copy);
 		ScalarConverter &operator=(ScalarConverter const &other);
 		static void convert(std::string input);
-		static void toChar(std::string &input);
-		static void toInt(std::string &input);
-		static void toFloat(std::string &input);
-		static void toDouble(std::string &input);
 };
+
+// converting
+void toChar(std::string &input);
+void toInt(std::string &input);
+void toFloat(std::string &input);
+void toDouble(std::string &input);
+// helpers
+bool isValideNum(std::string &input);
+bool isFinites(std::string &input);
+void printFinite(std::string &input, int flag);
 
 #endif
