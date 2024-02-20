@@ -1,4 +1,4 @@
-#include "ScalarConverter.hpp"
+  #include "ScalarConverter.hpp"
 
 bool isFinites(std::string input)
 {

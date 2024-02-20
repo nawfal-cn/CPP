@@ -2,16 +2,18 @@
 #define SERIALIZER_HPP
 
 #include <iostream>
+class Data;
 
 class Serializer
 {
 	private :
-		// put your private attributes here
-	public :
 		Serializer();
+	public :
 		~Serializer();
 		Serializer(Serializer const &copy);
 		Serializer &operator=(Serializer const &other);
+		uintptr_t serialize(Data* ptr);
+		Data* deserialize(uintptr_t raw);
 };
 
 #endif

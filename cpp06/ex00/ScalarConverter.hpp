@@ -1,13 +1,7 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
-#define GREEN "\033[1;32m"
-#define YELLOW "\033[1;33m"
-#define RESET "\033[0m" // Reset text color to default
-
-
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <iomanip>
 #include <limits>

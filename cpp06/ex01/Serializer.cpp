@@ -25,3 +25,13 @@ Serializer &Serializer::operator=(Serializer const &other)
 	}
 	return(*this);
 }
+
+uintptr_t Serializer::serialize(Data* ptr)
+{
+
+}
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+
+}
