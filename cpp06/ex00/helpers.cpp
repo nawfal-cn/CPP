@@ -1,6 +1,6 @@
 #include "ScalarConverter.hpp"
 
-bool isFinites(std::string &input)
+bool isFinites(std::string input)
 {
 	if(input == "inff" || input == "+inff" || input == "-inff" || input == "nanf")
 		return true;
@@ -9,7 +9,7 @@ bool isFinites(std::string &input)
 	return false;
 }
 
-void printFinite(std::string &input, int flag)
+void printFinite(std::string input, int flag)
 {
 	if(flag)
 		std::cout<<"Float: ";
@@ -29,6 +29,8 @@ void printFinite(std::string &input, int flag)
 
 bool isValideNum(std::string &input)
 {
+	if(input == ".f")
+		return false;
 	if(input[input.length() - 1] == 'f')
 		input.erase(input.length() - 1);
 	int points = 0;

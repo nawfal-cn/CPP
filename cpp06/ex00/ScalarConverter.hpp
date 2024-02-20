@@ -1,6 +1,11 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
+#define GREEN "\033[1;32m"
+#define YELLOW "\033[1;33m"
+#define RESET "\033[0m" // Reset text color to default
+
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -19,13 +24,13 @@ class ScalarConverter
 };
 
 // converting
-void toChar(std::string &input);
-void toInt(std::string &input);
-void toFloat(std::string &input);
-void toDouble(std::string &input);
+void toChar(std::string input);
+void toInt(std::string input);
+void toFloat(std::string input);
+void toDouble(std::string input);
 // helpers
 bool isValideNum(std::string &input);
-bool isFinites(std::string &input);
-void printFinite(std::string &input, int flag);
+bool isFinites(std::string input);
+void printFinite(std::string input, int flag);
 
 #endif
