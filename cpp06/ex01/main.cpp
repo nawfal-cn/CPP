@@ -13,5 +13,5 @@ int main()
     else
         std::cout<< RED <<"Unsuccesful serializing!"<< RESET <<std::endl;
     
-    system("leaks serialize");
+    delete originPtr;
 }
