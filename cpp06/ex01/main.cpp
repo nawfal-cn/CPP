@@ -12,6 +12,6 @@ int main()
         std::cout<< GREEN <<"Succesful serializing!"<< RESET <<std::endl;
     else
         std::cout<< RED <<"Unsuccesful serializing!"<< RESET <<std::endl;
-    
+
     delete originPtr;
 }
