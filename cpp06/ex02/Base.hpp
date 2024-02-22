@@ -5,10 +5,8 @@
 
 class Base
 {
-	private :
-		Base();
 	public :
-		~Base();
+	 	virtual ~Base();
 };
 
 #endif

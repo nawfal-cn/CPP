@@ -1,12 +1,12 @@
-NAME = serialize
+NAME = base
 
 CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp Serializer.cpp
+CPPFILES = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
-HEADER = Serializer.hpp Data.hpp
+HEADER = Base.hpp A.hpp B.hpp C.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
