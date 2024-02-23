@@ -47,7 +47,7 @@ void identify(Base& p)
 
 int main()
 {
-    std::srand(std::time(0));
+    std::srand(time(0));
 
     Base* objPtr = generate();
     identify(objPtr);
@@ -56,4 +56,5 @@ int main()
     identify(objRef);
 
     delete objPtr;
+    delete &objRef;
 }
