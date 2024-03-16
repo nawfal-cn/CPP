@@ -4,9 +4,9 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp
+CPPFILES = main.cpp Span.cpp
 
-HEADER = easyfind.hpp
+HEADER = Span.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 
