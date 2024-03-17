@@ -46,16 +46,6 @@ int Span::longestSpan()
     return (max - min);
 }
 
-// void Span::fillSpan(size_t start, size_t finish)
-// {
-//     srand(time(0));
-//     for(size_t i = 0; i < max; i++)
-//     {
-//         int randNum = start + rand() % (( finish + 1 ) - start);
-//         addNumber(randNum);
-//     }
-// }
-
 void Span::fillSpan(size_t start, size_t finish)
 {
     srand(time(0));

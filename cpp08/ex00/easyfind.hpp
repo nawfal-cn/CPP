@@ -7,14 +7,10 @@ template<typename T>
 void easyfind(T container, int value)
 {
     typename T::iterator it;
-    int index = 0;
-    for(it = container.begin(); it != container.end(); it++, index++)
-    {
-        if(*it == value)
-        {
-            std::cout<< "The value " << value << " is found at index: " << index <<std::endl;
-            return;
-        }
-    }
-    throw std::runtime_error("Value is not found");
+    
+    it = std::find(container.begin(), container.end(), value);
+    if(it != container.end())
+        std::cout<< "The value " << value << " is found at index: " << std::distance(container.begin(), it) <<std::endl;
+    else
+        throw std::runtime_error("Value is not found");
 }
