@@ -2,16 +2,13 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <cctype>
+#include <algorithm>
 
-class BitcoinExchange
-{
-	private :
-		// put your private attributes here
-	public :
-		BitcoinExchange();
-		~BitcoinExchange();
-		BitcoinExchange(BitcoinExchange const &copy);
-		BitcoinExchange &operator=(BitcoinExchange const &other);
-};
+bool valide_date(std::string date);
+bool valide_value(std::string value);
 
 #endif

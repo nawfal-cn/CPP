@@ -1,7 +1,5 @@
 #include "BitcoinExchange.hpp"
-#include <fstream>
-#include <sstream>
-#include <string>
+
 
 int main(int ac, char **av)
 {
@@ -12,7 +10,6 @@ int main(int ac, char **av)
     }
     else
     {
-
         std::ifstream input(av[1]);
         if(!input)
         {
@@ -26,12 +23,10 @@ int main(int ac, char **av)
             std::istringstream iss(line);
             std::string date;
             std::getline(iss, date, '|');
-            date.erase(date.end() - 1);
             std::string value;
-            std::getline(iss, value, '|');
-            value.erase(value.begin());
-
-            std::cout<< date << " => " << value << " = 0" << std::endl;
+            std::getline(iss, value);
+            if(valide_date(date) && valide_value(value))
+                std::cout<< date << " => " << value << " = 0" << std::endl;   
         }
         input.close();
     }

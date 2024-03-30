@@ -15,10 +15,6 @@ all : $(NAME)
 $(NAME) : $(CPPOBJ) $(HEADER)
 		$(CCPP) $(CPPFLAGS) $(CPPOBJ) -o $(NAME)
 
-run : all clean
-	clear
-	./$(NAME)
-
 clean :
 	rm -f $(CPPOBJ)
 
