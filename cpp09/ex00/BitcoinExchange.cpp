@@ -53,7 +53,7 @@ bool valide_date(std::string date)
         std::cout<< "Error: bad input => " << date <<std::endl;
         return false;
     }
-
+    std::cout << "\033[33m" << "date: \"" << date << "\"" << "\033[0m"  << std::endl;
     return true;
 }
 
@@ -87,5 +87,6 @@ bool valide_value(std::string value)
     if(range > 1000)
         {std::cerr<< "Error: too large a number." <<std::endl; return false;}
 
+    std::cout << "\033[33m" << "value: \"" << value << "\"" << "\033[0m" << std::endl;
     return true;
 }
