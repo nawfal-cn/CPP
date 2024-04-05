@@ -9,7 +9,8 @@
 #include <algorithm>
 #include <map>
 
-bool valide_date(std::string date);
-bool valide_value(std::string value);
+bool valide_date(std::string &date);
+bool valide_value(std::string &value);
+std::string _trim(std::string str);
 
 #endif

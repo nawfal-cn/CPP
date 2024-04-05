@@ -1,6 +1,15 @@
 #include "BitcoinExchange.hpp"
+std::string _trim(std::string str)
+{
+    size_t first = str.find_first_not_of(' ');
+    size_t last = str.find_last_not_of(' ');
+    if(first > str.length() || last > str.length())
+        return ("");
+    str = str.substr(first, (last - first + 1));
+    return str;
+}
 
-bool acceptable_date(std::string date)
+bool acceptable_date(std::string &date)
 {
     // check the length of the date
     if(date.length() > 10 || date.length() < 8)
@@ -23,13 +32,14 @@ bool acceptable_date(std::string date)
 
     // check if date is in a valide range
     std::string ymd[3];
+    size_t firstPos = 0;
     for(size_t i = 0; i < 3; i++)
     {
-        size_t firstPos = 0;
-        size_t lastPos = date.find('-');
-        ymd[i] = date.substr(firstPos, lastPos);
-        date.erase(firstPos, lastPos + 1);
+        size_t lastPos = date.find('-' ,firstPos);
+        ymd[i] = date.substr(firstPos, lastPos - firstPos);
+        firstPos = lastPos + 1;
     }
+
     if(std::stoi(ymd[0]) < 2009 || std::stoi(ymd[0]) > 2022)
         return false;
     if(std::stoi(ymd[1]) < 1 || std::stoi(ymd[1]) > 12)
@@ -40,30 +50,19 @@ bool acceptable_date(std::string date)
     return true;
 }
 
-bool valide_date(std::string date)
+bool valide_date(std::string &date)
 {
-    // trim date part to remove white spaces
-    size_t first = date.find_first_not_of(' ');
-    size_t last = date.find_last_not_of(' ');
-    date = date.substr(first, (last - first + 1));
-
     // check if the date is valide
     if(!acceptable_date(date))
     {
-        std::cout<< "Error: bad input => " << date <<std::endl;
+        std::cout << "Error: bad input => " << date <<std::endl;
         return false;
     }
-    std::cout << "\033[33m" << "date: \"" << date << "\"" << "\033[0m"  << std::endl;
     return true;
 }
 
-bool valide_value(std::string value)
+bool valide_value(std::string &value)
 {
-    // trim value part to remove white spaces
-	size_t first = value.find_first_not_of(' ');
-    size_t last = value.find_last_not_of(' ');
-    value = value.substr(first, (last - first + 1));
-
     // check if the value is all valid numbers
     std::string copyValue = value;
     if(value[0] == '-')
@@ -87,6 +86,5 @@ bool valide_value(std::string value)
     if(range > 1000)
         {std::cerr<< "Error: too large a number." <<std::endl; return false;}
 
-    std::cout << "\033[33m" << "value: \"" << value << "\"" << "\033[0m" << std::endl;
     return true;
 }

@@ -37,9 +37,20 @@ bool valide_value(std::string value)
 
 int main(int ac, char **av)
 {
-    (void)ac;
+    // (void)ac;
 
-    if(valide_value(av[1]))
-        std::cout<< av[1] <<std::endl;
+    // if(valide_value(av[1]))
+    //     std::cout<< av[1] <<std::endl;
+    std::string date = "2011-01-03";
+
+    std::string ymd[3];
+
+    ymd[0] = date.substr(0, 4);
+    ymd[1] = date.substr(5, 7);
+    ymd[2] = date.substr(8, 10);
+
+    std::cout << "\033[33m" << "year: \"" << ymd[0] << "\"" << "\033[0m"  << std::endl;
+    std::cout << "\033[33m" << "month: \"" << ymd[1] << "\"" << "\033[0m"  << std::endl;
+    std::cout << "\033[33m" << "day: \"" << ymd[2] << "\"" << "\033[0m"  << std::endl;
     return 0;
 }
