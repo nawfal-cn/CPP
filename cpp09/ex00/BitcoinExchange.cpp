@@ -9,6 +9,20 @@ std::string _trim(std::string str)
     return str;
 }
 
+std::string getDate(std::string dataline)
+{
+	size_t comma = dataline.find(',');
+	return dataline.substr(0, comma);
+}
+
+float getExchange(std::string dataline)
+{
+	size_t comma = dataline.find(',');
+	std::string exch = dataline.substr(comma + 1, dataline.length());
+	float exchange = std::strtof(exch.c_str(), NULL);
+	return exchange;
+}
+
 bool acceptable_date(std::string &date)
 {
     // check the length of the date
