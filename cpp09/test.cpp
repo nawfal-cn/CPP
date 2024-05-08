@@ -13,6 +13,17 @@ std::vector< std::vector<int> > initialize(std::vector<int> &vector)
 	return newVector;
 }
 
+void swap(std::vector< std::vector<int> > &vector)
+{
+	for(unsigned long i = 0; i < vector.size() - 1; i += 2)
+	{
+		std::vector<int>::iterator it = vector[i].end() - 1;
+		std::vector<int>::iterator it1 = vector[i+1].end() - 1;
+		if(*it > *it1)
+			std::swap(vector[i], vector[i+1]);
+	}
+}
+
 void shrink(std::vector< std::vector<int> > &vector)
 {
 	for(unsigned long i = 0; i < vector.size() - 1; ++i)
@@ -22,55 +33,115 @@ void shrink(std::vector< std::vector<int> > &vector)
 	}
 }
 
-void one(std::vector< std::vector<int> > &vector, std::vector<int> &rest)
+void remove_rest(std::vector< std::vector<int> > &vector, std::vector<int> &rest, unsigned long &grpSize)
 {
-	for(unsigned long j = 0; vector.size() > 1; ++j)
+	for(unsigned long i = 0; i < vector.size(); ++i)
 	{
-		for(unsigned long i = 0; i < vector.size() - 1; i += 2)
+		if(vector[i].size() < grpSize)
 		{
-			if(vector[i][j] > vector[i+1][j])
-			{
-				std::swap(vector[i], vector[i+1]);
-			}
+			rest.insert(rest.end(), vector[i].begin(), vector[i].end());
+			vector.erase(vector.begin() + i);
 		}
+	}
+}
+
+void print_vector(std::string message, std::vector< std::vector<int> > &vector)
+{
+	std::string input;
+	std::getline(std::cin, input);
+	std::cout<< message;
+	for(unsigned long i = 0; i < vector.size(); ++i)
+	{
+		for(unsigned long j = 0; j < vector[i].size(); ++j)
+			std::cout<< vector[i][j] << " ";
+		std::cout << "| ";
+	}
+	std::cout<<std::endl;
+}
+
+void print_rest(std::string message, std::vector<int> &rest)
+{
+	std::string input;
+	std::getline(std::cin, input);
+	std::cout<< message;
+	for(unsigned long i = 0; i < rest.size(); ++i)
+	{
+		std::cout<< rest[i] << " ";
+		std::cout << "| ";
+	}
+	std::cout<<std::endl;
+}
+
+void transfer_vector(std::vector< std::vector<int> > &vector, std::vector< std::vector<int> > &vector2)
+{
+	vector.erase(vector.begin(), vector.end());
+	vector.insert(vector.begin(), vector2.begin(), vector2.end());
+}
+
+void reverse_sort(std::vector< std::vector<int> > &vector)
+{
+
+	for(; vector[0].size() > 1 ;)
+	{
+		std::vector< std::vector<int> > newVector;
+		for(unsigned long i = 0 ; i < vector.size(); ++i)
+		{
+			int midPoint = vector[0].size() / 2;
+
+			std::vector<int> firstHalf(vector[i].begin(), vector[i].begin() + midPoint);
+			std::vector<int> secondHalf(vector[i].begin() + midPoint, vector[i].end());
+
+			newVector.push_back(firstHalf);
+			newVector.push_back(secondHalf);
+		}
+		
+		print_vector("lol:    ", newVector);
+		transfer_vector(vector, newVector);
+
+		std::vector< std::vector<int> > mainChain;
+		std::vector< std::vector<int> > pand;
+
+		mainChain.push_back(vector[0]);
+		for(unsigned long i = 1; i < vector.size(); i += 2)
+			mainChain.push_back(vector[i]);
+
+		for(unsigned long i = 2; i < vector.size(); i += 2)
+			pand.push_back(vector[i]);
+
+		print_vector("main:  ", mainChain);	
+		print_vector("pand:  ", pand);	
+	}
+}
+
+void fj_sort(std::vector< std::vector<int> > &vector)
+{
+	std::string input;
+	std::vector<int> rest;
+	unsigned long grpSize = 2;
+
+	for(;vector.size() > 1; grpSize *= 2)
+	{
+		swap(vector);
+		// print_vector("After swap:      ", vector);
+
+		//---------------------------------------------------------------------
+
 		shrink(vector);
+		print_vector("After shrink:    ", vector);
 
-		for(unsigned long i = 0; i < vector.size(); ++i)
-		{
-			if(vector[i].size() < 2) // nta 3andk j incrementing every time by +1, but that number 2 has to be multiplyed by *2 every time not to be increased by +1
-			{
-				rest.insert(rest.end(), vector[i].begin(), vector[i].end());
-				vector.erase(vector.begin() + i);
-			}
-		}
+		//---------------------------------------------------------------------
+
+		remove_rest(vector, rest, grpSize);
+		// print_rest("Rest:            ", rest);
+
+		//---------------------------------------------------------------------
+
+
 	}
 
-	for(unsigned long i = 0; i < vector.size() - 1; i += 2)
-	{
-		if(vector[i][1] > vector[i+1][1])
-		{
-			std::swap(vector[i], vector[i+1]);
-		}
-	}
-	shrink(vector);
+	reverse_sort(vector);
 }
 
-void two(std::vector< std::vector<int> > &vector)
-{
-	for(unsigned long i = 0; i < vector.size() - 1; i += 2)
-	{
-		if(vector[i][1] > vector[i+1][1])
-		{
-			std::swap(vector[i], vector[i+1]);
-		}
-	}
-	shrink(vector);
-}
-
-// std::vector<int> rest()
-// {
-
-// }
 
 int main(int ac, char **av)
 {
@@ -82,10 +153,8 @@ int main(int ac, char **av)
 		// initialize every argument into its own vector
 		std::vector< std::vector<int> > vector = initialize(argsVector);
 
-		std::vector<int> rest;
-
 		// print the vector before gets sorted
-		std::cout<< "Before:    ";
+		std::cout<< "Before:          ";
 		for(unsigned long i = 0; i < vector.size(); ++i)
 		{
 			for(unsigned long j = 0; j < vector[i].size(); ++j)
@@ -94,35 +163,8 @@ int main(int ac, char **av)
 		}
 		std::cout<<std::endl;
 		
-		one(vector, rest);
+		fj_sort(vector);
 
-		std::cout<< "After:     ";
-		for(unsigned long i = 0; i < vector.size(); ++i)
-		{
-			for(unsigned long j = 0; j < vector[i].size(); ++j)
-				std::cout<< vector[i][j] << " ";
-			std::cout << "| ";
-		}
-		std::cout<<std::endl;
-
-		std::cout<< "Rest:      ";
-		for(unsigned long i = 0; i < rest.size(); ++i)
-		{
-				std::cout<< rest[i] << " ";
-			std::cout << "| ";
-		}
-		std::cout<<std::endl;
-
-		// two(vector);
-
-		// std::cout<< "After:     ";
-		// for(unsigned long i = 0; i < vector.size(); ++i)
-		// {
-		// 	for(unsigned long j = 0; j < vector[i].size(); ++j)
-		// 		std::cout<< vector[i][j] << " ";
-		// 	std::cout << "| ";
-		// }
-		// std::cout<<std::endl;
 	}
 
 	catch(const std::exception& e)
@@ -133,35 +175,3 @@ int main(int ac, char **av)
 
 	return 0;
 }
-
-
-
-// void one(std::vector< std::vector<int> > &vector, std::vector<int> &rest)
-// {
-// 	for(unsigned long i = 0; i < vector.size() - 1; i += 2)
-// 	{
-// 		if(vector[i][0] > vector[i+1][0])
-// 		{
-// 			std::swap(vector[i], vector[i+1]);
-// 		}
-// 	}
-// 	shrink(vector);
-
-// 	for(unsigned long i = 0; i < vector.size(); ++i)
-// 	{
-// 		if(vector[i].size() < 2)
-// 		{
-// 			rest.insert(rest.end(), vector[i].begin(), vector[i].end());
-// 			vector.erase(vector.begin() + i);
-// 		}
-// 	}
-
-// 	for(unsigned long i = 0; i < vector.size() - 1; i += 2)
-// 	{
-// 		if(vector[i][1] > vector[i+1][1])
-// 		{
-// 			std::swap(vector[i], vector[i+1]);
-// 		}
-// 	}
-// 	shrink(vector);
-// }
