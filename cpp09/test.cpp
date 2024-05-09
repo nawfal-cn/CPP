@@ -80,7 +80,6 @@ void transfer_vector(std::vector< std::vector<int> > &vector, std::vector< std::
 
 void reverse_sort(std::vector< std::vector<int> > &vector)
 {
-
 	for(; vector[0].size() > 1 ;)
 	{
 		std::vector< std::vector<int> > newVector;
