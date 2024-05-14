@@ -4,9 +4,9 @@ CCPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPFILES = main.cpp PmergeMe.cpp
+CPPFILES = main.cpp PmergeMe.cpp PmergeMeDeque.cpp
 
-HEADER = PmergeMe.hpp
+HEADER = PmergeMe.hpp PmergeMeDeque.hpp
 
 CPPOBJ = $(CPPFILES:.cpp=.o)
 

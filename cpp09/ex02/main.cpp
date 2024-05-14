@@ -1,44 +1,60 @@
 #include "PmergeMe.hpp"
+#include "PmergeMeDeque.hpp"
+
+void fj_sort(Dbl_container &vector)
+{
+	Dbl_container rest;
+	
+	forward_sort(vector, rest);
+	reverse_sort(vector, rest);
+}
+
+void dq_fj_sort(dq_Dbl_container &deque)
+{
+	dq_Dbl_container rest;
+	
+	dq_forward_sort(deque, rest);
+	dq_reverse_sort(deque, rest);
+}
 
 int main(int ac, char **av)
 {
 	try
 	{
-		// split arguments and fill it into a vector
-		std::vector<int> vector = splitArguments(ac, av);
+		if(ac < 2)
+		{
+			std::cerr << "No arguments!" << std::endl;
+			return 1;
+		}
+		container args = splitArguments(ac, av);
+		dq_container dq_args = dq_splitArguments(ac, av);
 
-		// print the vector before gets sorted
-		std::cout<< "Before:    ";
-		for(unsigned long i = 0; i < vector.size(); ++i)
-			std::cout<< vector[i] << " ";
-		std::cout<<std::endl;
+		Dbl_container vector = initialize(args);
+		dq_Dbl_container deque = dq_initialize(dq_args);
 
-		// save the time directly before start sorting
-		std::clock_t start = std::clock();
+		print_vector("Before:      ", vector);
 		
-		// sort the vector
-		std::sort(vector.begin(), vector.end());
+        std::clock_t start = std::clock();
+        fj_sort(vector);
+        std::clock_t end = std::clock();
+
+        std::clock_t dq_start = std::clock();
+        dq_fj_sort(deque);
+        std::clock_t dq_end = std::clock();
+
+		print_vector("After :      ", vector);
 		
-		// save the time directly after sorting
-		std::clock_t end = std::clock();
-
-		// print the vector after gets sorted
-		std::cout<< "After:    ";
-		for(unsigned long i = 0; i < vector.size(); ++i)
-			std::cout<< vector[i] << " ";
-		std::cout<<std::endl;
-
-		// calculate time that took to sort the vector
-		double duration = ( end - start ) / (double) CLOCKS_PER_SEC * 1000000;
-
-		// print time that takes to sort the vector in us
-		std::cout<< "Time to process a range of " << vector.size() << " elements with std::vector<int> : " << duration << " us" <<std::endl;
+        double elapsed = 1000000.0 * (end - start) / CLOCKS_PER_SEC;
+        double dq_elapsed = 1000000.0 * (dq_end - dq_start) / CLOCKS_PER_SEC;
+        std::cout << "Time to process a range of " << vector.size() << " elements with std::vector<> :    " << elapsed << " us" << std::endl;
+        std::cout << "Time to process a range of " << deque.size() << " elements with std::deque<> :    " << dq_elapsed << " us" << std::endl;
 	}
+
 	catch(const std::exception& e)
 	{
-		std::cerr << "Invalide argument: " << e.what() << '\n';
+		std::cerr << "Invalide argument: " << e.what() << std::endl;
 		return 1;
 	}
 
 	return 0;
-}	
+}

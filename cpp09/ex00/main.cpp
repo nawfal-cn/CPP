@@ -13,8 +13,8 @@ int main(int ac, char **av)
 
 		std::map<std::string, float> map;
 		std::string dataline;
-		std::getline(database, dataline);
 
+		std::getline(database, dataline);
 		while(std::getline(database, dataline))
 			map[getDate(dataline)] = getExchange(dataline);
 
@@ -28,6 +28,8 @@ int main(int ac, char **av)
 		std::getline(input, line);
 		while(std::getline(input, line))
 		{
+			if(line.empty())
+				continue;
 			size_t pipe = line.find('|');
 			std::string date = _trim(line.substr(0, pipe));
 			std::string value = _trim(line.substr(pipe + 1, line.length() - pipe - 1));
