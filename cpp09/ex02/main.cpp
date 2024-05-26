@@ -47,7 +47,7 @@ int main(int ac, char **av)
         double elapsed = 1000000.0 * (end - start) / CLOCKS_PER_SEC;
         double dq_elapsed = 1000000.0 * (dq_end - dq_start) / CLOCKS_PER_SEC;
         std::cout << "Time to process a range of " << vector.size() << " elements with std::vector<> :    " << elapsed << " us" << std::endl;
-        std::cout << "Time to process a range of " << deque.size() << " elements with std::deque<> :    " << dq_elapsed << " us" << std::endl;
+        std::cout << "Time to process a range of " << deque.size() << " elements with std::deque<>  :    " << dq_elapsed << " us" << std::endl;
 	}
 
 	catch(const std::exception& e)

@@ -97,7 +97,7 @@ bool valide_value(std::string &value)
     float range = std::strtof(copyValue.c_str(), NULL);
     if(range < 0)
         {std::cerr<< "Error: not a positive number." <<std::endl; return false;}
-    if(range > 1000)
+    if(range > INT_MAX)
         {std::cerr<< "Error: too large a number." <<std::endl; return false;}
 
     return true;

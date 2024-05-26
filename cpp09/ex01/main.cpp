@@ -1,57 +1,51 @@
 #include "RPN.hpp"
 
+float RPN_calculator(int ac, char **av)
+{
+    std::stack<float> stack;
+
+    for (int i = 1; i < ac; ++i)
+	{
+        std::istringstream iss(av[i]);
+        std::string token;
+        while (std::getline(iss, token, ' '))
+		{
+			if(!token.empty())
+			{
+				if(!validNum(token) && !validOperator(token))
+					throw std::invalid_argument("Error: invalid argument");
+				if(validOperator(token))
+				{
+					float i1, i2;
+					if(stack.size() > 1) {
+						i2 = stack.top(); stack.pop();
+						i1 = stack.top(); stack.pop();
+					}
+					else
+						throw std::out_of_range("Error: Wrong balance between numbers and operators");
+					stack.push(calculate(i1, i2, token[0]));
+				}	
+				else
+					stack.push(std::stof(token));
+			}
+		}
+    }
+	if(stack.size() > 1)
+		throw std::out_of_range("Error: Wrong balance between numbers and operators");
+    return stack.top();
+}
+
 int main(int ac, char **av)
 {
-	std::stack<std::string> args = splitArguments(ac, av);
-	std::stack<int> numbers;
-	std::stack<char> operators;
-
-	// fill stacks with numbers and operators
-	for(;!args.empty();)
+	try
 	{
-		if(validNum(args.top()))
-		{
-			numbers.push(atoi((args.top()).c_str()));
-			args.pop();
+		if(ac < 2) {
+			std::cerr<< "Enter arguments!" <<std::endl; return 1;
 		}
-		else if(validOperator(args.top()))
-		{
-			operators.push(args.top()[0]);
-			args.pop();
-		}
-		else
-		{
-			std::cerr<< "Error: invalid argument" <<std::endl;	
-			return 1;
-		}
+		std::cout<< RPN_calculator(ac, av) <<std::endl;
 	}
-
-	// check balance between numbers and operators
-	if(operators.size() != numbers.size() - 1)
+	catch(const std::exception& e)
 	{
-		if(operators.size() < numbers.size() - 1)
-			std::cerr<< "too few operators." <<std::endl;
-		if(numbers.size() <= operators.size())
-			std::cerr<< "too few numbers." <<std::endl;
-		return 1;
+		std::cerr << e.what() << '\n';
 	}
-
-	// calculate the result
-	for(;!operators.empty();)
-	{
-		int i1 = numbers.top();
-		numbers.pop();
-		int i2 = numbers.top();
-		numbers.pop();
-		char op = operators.top();
-		operators.pop();
-
-		int sum = calculate(i1, i2, op);
-		numbers.push(sum);
-	}
-
-	// print the result
-	std::cout<< numbers.top() <<std::endl;
-
-	return 0;
 }
